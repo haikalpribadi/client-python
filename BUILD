@@ -32,21 +32,10 @@ load("@graknlabs_bazel_distribution//github:rules.bzl", "deploy_github")
 
 py_library(
     name = "client_python",
-    srcs = [
-        "//grakn:__init__.py",
-        "//grakn:client.py",
-        "//grakn:service/Keyspace/KeyspaceService.py",
-        "//grakn:service/Session/TransactionService.py",
-        "//grakn:service/Session/util/enums.py",
-        "//grakn:service/Session/util/RequestBuilder.py",
-        "//grakn:service/Session/util/ResponseReader.py",
-        "//grakn:service/Session/Concept/ConceptFactory.py",
-        "//grakn:service/Session/Concept/BaseTypeMapping.py",
-        "//grakn:service/Session/Concept/Concept.py",
-        "//grakn:exception/GraknError.py",
-    ],
+    srcs = glob(["grakn/**/*.py"]),
     deps = [
-        "//grakn:protocol_python",
+        "@graknlabs_protocol//keyspace:python",
+        "@graknlabs_protocol//session:python",
         graknlabs_client_python_requirement("protobuf"),
         graknlabs_client_python_requirement("grpcio"),
         graknlabs_client_python_requirement("six"),

@@ -23,9 +23,10 @@ workspace(name = "graknlabs_client_python")
 # Grakn Labs dependencies #
 ###########################
 
-load("//dependencies/graknlabs:dependencies.bzl", "graknlabs_grakn_core", "graknlabs_build_tools")
-graknlabs_grakn_core()
+load("//dependencies/graknlabs:dependencies.bzl", "graknlabs_build_tools", "graknlabs_protocol", "graknlabs_grakn_core")
 graknlabs_build_tools()
+graknlabs_protocol()
+graknlabs_grakn_core()
 
 load("@graknlabs_build_tools//distribution:dependencies.bzl", "graknlabs_bazel_distribution")
 graknlabs_bazel_distribution()
